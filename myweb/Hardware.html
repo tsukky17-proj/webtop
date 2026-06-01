@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hardware — kumilabo</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .article-hero {
+      padding: 10rem 2rem 4rem;
+      background: var(--surface);
+      border-bottom: 1px solid #222;
+    }
+
+    .article-hero .container {
+      max-width: 720px;
+    }
+
+    .article-category {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+
+    .article-title {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.25;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .article-meta {
+      font-size: 0.82rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .article-body {
+      padding: 5rem 2rem 6rem;
+    }
+
+    .article-body .container {
+      max-width: 720px;
+    }
+
+    .article-body h2 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 3.5rem 0 1.2rem;
+    }
+
+    .article-body h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 2.2rem 0 0.8rem;
+    }
+
+    .article-body p {
+      font-size: 1.02rem;
+      color: #ccc;
+      margin-bottom: 1.4rem;
+      line-height: 1.85;
+    }
+
+    .article-body strong {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .article-body ul {
+      list-style: none;
+      margin-bottom: 1.4rem;
+    }
+
+    .article-body ul li {
+      font-size: 1rem;
+      color: #ccc;
+      padding: 0.5rem 0 0.5rem 1.4rem;
+      position: relative;
+      border-bottom: 1px solid #222;
+      line-height: 1.75;
+    }
+
+    .article-body ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.85rem;
+    }
+
+    .callout {
+      background: #1e1e1e;
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 1.2rem 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .callout p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #bbb;
+    }
+
+    .callout.warn {
+      border-left-color: #f87171;
+    }
+
+    .callout.warn p {
+      color: #fca5a5;
+    }
+
+    .parts-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0 2rem;
+      font-size: 0.92rem;
+    }
+
+    .parts-table th {
+      text-align: left;
+      padding: 0.7rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid #333;
+    }
+
+    .parts-table td {
+      padding: 0.8rem 1rem;
+      color: #ccc;
+      border-bottom: 1px solid #222;
+    }
+
+    .parts-table td.price {
+      color: #fff;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .gadget-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+      margin: 1.5rem 0 2rem;
+    }
+
+    .gadget-card {
+      background: #1a1a1a;
+      border: 1px solid #262626;
+      border-radius: 10px;
+      padding: 1.4rem 1.5rem;
+      transition: border-color 0.2s;
+    }
+
+    .gadget-card:hover {
+      border-color: var(--accent);
+    }
+
+    .gadget-card .gadget-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+
+    .gadget-card .gadget-desc {
+      font-size: 0.88rem;
+      color: #999;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .gadget-card .gadget-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      padding: 0.2rem 0.6rem;
+      background: #222;
+      border-radius: 999px;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      margin-bottom: 0.7rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+      margin-bottom: 3rem;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover {
+      color: var(--accent);
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 3.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid #222;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      padding: 0.3rem 0.8rem;
+      background: #222;
+      border-radius: 999px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #222;
+      margin: 3.5rem 0;
+    }
+
+    @media (max-width: 600px) {
+      .gadget-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html" class="logo">kumilabo</a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#categories">Categories</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="article-hero">
+      <div class="container">
+        <p class="article-category">Hardware</p>
+        <h1 class="article-title">初めての自作PC——3回起動に失敗して、やっとわかったこと</h1>
+        <p class="article-meta">2026-05-28 &nbsp;·&nbsp; 自作PC・ガジェット</p>
+      </div>
+    </section>
+
+    <section class="article-body">
+      <div class="container">
+        <a href="index.html#categories" class="back-link">← Categories に戻る</a>
+
+        <p>
+          「自作PCって難しそう」——そう思い続けて2年、ついに手を動かすことにした。
+          きっかけは単純で、<strong>ゲームのフレームレートが落ちすぎてストレスが限界に達した</strong>からだ。
+          新品を買う予算はなく、パーツを少しずつ揃えるしかなかった。
+        </p>
+        <p>
+          結論から言うと、初回起動は失敗した。2回目も失敗した。3回目でようやくBIOSの画面を見た。
+          このページはその記録だ。
+        </p>
+
+        <h2>選んだパーツ構成</h2>
+        <p>
+          予算は約7万円。用途はゲームと動画編集の軽作業。コスパ重視でAMDのRyzen構成にした。
+        </p>
+
+        <table class="parts-table">
+          <thead>
+            <tr>
+              <th>パーツ</th>
+              <th>選択</th>
+              <th>価格</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>CPU</td>
+              <td>AMD Ryzen 5 5600</td>
+              <td class="price">¥18,800</td>
+            </tr>
+            <tr>
+              <td>マザーボード</td>
+              <td>MSI B550M PRO-VDH WIFI</td>
+              <td class="price">¥11,500</td>
+            </tr>
+            <tr>
+              <td>メモリ</td>
+              <td>DDR4 16GB (8GB×2)</td>
+              <td class="price">¥6,200</td>
+            </tr>
+            <tr>
+              <td>ストレージ</td>
+              <td>WD Blue SN570 500GB NVMe</td>
+              <td class="price">¥7,300</td>
+            </tr>
+            <tr>
+              <td>GPU</td>
+              <td>RX 6600（中古）</td>
+              <td class="price">¥19,000</td>
+            </tr>
+            <tr>
+              <td>電源</td>
+              <td>Corsair CV550 550W</td>
+              <td class="price">¥7,400</td>
+            </tr>
+            <tr>
+              <td>ケース</td>
+              <td>Fractal Design Focus G Mini</td>
+              <td class="price">¥5,800</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>失敗1：電源ケーブルの刺し忘れ</h2>
+        <p>
+          電源ボタンを押しても何も起きない。ファンすら回らない。
+          30分かけて配線を確認したが原因がわからず、半ば諦めかけたとき気づいた——
+          <strong>CPUの補助電源（8ピン）を刺していなかった。</strong>
+        </p>
+        <p>
+          マザーボードの24ピンだけ繋いで満足していた。CPUに電源が届かなければ当然動かない。
+          初心者がやりがちなミスらしく、調べると同じ失敗談がいくつも出てきた。
+        </p>
+
+        <div class="callout warn">
+          <p>電源ケーブルは「24ピン（メイン）」と「4+4ピン or 8ピン（CPU）」の2系統が必須。片方だけでは起動しない。</p>
+        </div>
+
+        <h2>失敗2：メモリのスロット位置</h2>
+        <p>
+          CPUの電源を繋いで再挑戦。今度はファンが回り出したが、画面には何も映らない。
+          BIOSメモリエラーのビープ音が鳴り続けた。
+        </p>
+        <p>
+          原因はメモリをスロット1・2に挿していたこと。
+          このマザーボードはデュアルチャンネルを有効にするには<strong>スロット2・4（A2・B2）</strong>に挿す必要があった。
+          マニュアルに書いてあったが、見逃していた。
+        </p>
+
+        <div class="callout">
+          <p>マザーボードのメモリスロットは「推奨スロット」が決まっている。2枚挿しの場合は必ずマニュアルを確認すること。</p>
+        </div>
+
+        <h2>失敗3：OSインストールのドライブ選択ミス</h2>
+        <p>
+          BIOSは拝めた。Windowsのインストールメディアを刺して進めていくと、
+          途中でインストール先のドライブが見つからないと言われた。
+        </p>
+        <p>
+          NVMe SSDはBIOSで認識されていたが、Windowsのセットアップ画面では表示されなかった。
+          理由は<strong>NVMeドライバーが含まれていないインストールメディア</strong>を使っていたからだ。
+          Microsoftの公式ツールで最新のメディアを作り直したら、あっさり解決した。
+        </p>
+
+        <h2>3度目の正直、起動成功</h2>
+        <p>
+          ドライバを入れ直し、OSインストールも完了。デスクトップ画面が初めて表示されたときの達成感は、
+          アルバイト代を貯めてゲーム機を買ったときとは別の種類の喜びだった。
+          <strong>「自分で組み立てたものが動いている」</strong>という実感は格別だった。
+        </p>
+        <p>
+          失敗のたびに検索して、一つひとつ原因を潰していく過程が、
+          プログラミングのデバッグと妙に似ていると思った。
+        </p>
+
+        <hr class="divider">
+
+        <h2>そこから広がったガジェット沼</h2>
+        <p>
+          PCが完成すると、今度は「環境」が気になり始めた。
+          モニター、キーボード、マウス——デスク周りを少しずつ整えていく作業が楽しくなった。
+          以下は実際に使っていて気に入っているガジェットたち。
+        </p>
+
+        <div class="gadget-grid">
+          <div class="gadget-card">
+            <span class="gadget-label">モニター</span>
+            <p class="gadget-name">LG 27GN800-B</p>
+            <p class="gadget-desc">27インチ / QHD / 144Hz。ゲームも作業も十分な解像度で、この価格帯では満足度が高い。</p>
+          </div>
+          <div class="gadget-card">
+            <span class="gadget-label">キーボード</span>
+            <p class="gadget-name">Keychron K2 Pro</p>
+            <p class="gadget-desc">75%レイアウト、赤軸。打鍵感が心地よく、コードを書く時間が増えた気がする。</p>
+          </div>
+          <div class="gadget-card">
+            <span class="gadget-label">マウス</span>
+            <p class="gadget-name">Logicool G703h</p>
+            <p class="gadget-desc">ワイヤレス化して快適さが段違い。充電の手間はあるが、ケーブルのストレスはゼロになった。</p>
+          </div>
+          <div class="gadget-card">
+            <span class="gadget-label">イヤホン</span>
+            <p class="gadget-name">SONY WF-1000XM5</p>
+            <p class="gadget-desc">ノイキャンが強力で図書館でも集中できる。学生には高い買い物だが後悔していない。</p>
+          </div>
+        </div>
+
+        <p>
+          ガジェット選びも投資と似ていて、「とりあえず試す→合わなければ変える」のサイクルが大事だと感じている。
+          今後も気になったものは積極的に試して、ここに記録していく。
+        </p>
+
+        <div class="tag-list">
+          <span class="tag">自作PC</span>
+          <span class="tag">Ryzen</span>
+          <span class="tag">初心者</span>
+          <span class="tag">トラブル解決</span>
+          <span class="tag">ガジェット</span>
+          <span class="tag">デスク環境</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 kumilabo</p>
+  </footer>
+</body>
+</html>
