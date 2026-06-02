@@ -140,6 +140,65 @@ nav {
   margin-bottom: 2.5rem;
 }
 
+.about-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 2.5rem;
+}
+
+.profile-photo {
+  flex-shrink: 0;
+}
+
+.profile-photo img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #2a2a2a;
+  display: block;
+}
+
+.profile-name {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.04em;
+  margin-bottom: 1rem !important;
+}
+
+.profile-list {
+  list-style: none;
+  margin-top: 1.4rem;
+}
+
+.profile-list li {
+  font-size: 0.92rem;
+  color: var(--muted);
+  padding: 0.3rem 0;
+  padding-left: 1.1em;
+  position: relative;
+}
+
+.profile-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+@media (max-width: 600px) {
+  .about-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-list li {
+    text-align: left;
+  }
+}
+
 .about-text p {
   font-size: 1.05rem;
   color: #ccc;
