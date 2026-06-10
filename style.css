@@ -5,8 +5,9 @@
 }
 
 :root {
-  --bg: #f5f4f0;
-  --surface: #eae9e4;
+  --bg: #eaf4fb;
+  --surface: #e7f0f9;
+  --border: #c5d9ec;
   --accent: #4d7700;
   --text: #1c1c1a;
   --muted: #6e6e6a;
@@ -51,7 +52,7 @@ header {
   right: 0;
   z-index: 100;
   padding: 1.2rem 2rem;
-  background: rgba(245, 244, 240, 0.92);
+  background: rgba(231, 240, 249, 0.92);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
@@ -153,7 +154,7 @@ nav {
 .about {
   padding: 5rem 2rem;
   background: var(--surface);
-  border-top: 1px solid #d5d4cf;
+  border-top: 1px solid var(--border);
   box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.6);
 }
 
@@ -186,7 +187,7 @@ nav {
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #d0cfca;
+  border: 2px solid var(--border);
   display: block;
 }
 
@@ -274,7 +275,7 @@ nav {
   flex-direction: column;
   padding: 2rem 1.8rem;
   background: var(--surface);
-  border: 1px solid #d5d4cf;
+  border: 1px solid var(--border);
   border-radius: 12px;
   text-decoration: none;
   color: var(--text);
@@ -321,7 +322,7 @@ footer {
   text-align: center;
   font-size: 0.8rem;
   color: var(--muted);
-  border-top: 1px solid #d5d4cf;
+  border-top: 1px solid var(--border);
 }
 
 /* ---- Responsive ---- */

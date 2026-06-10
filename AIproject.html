@@ -9,7 +9,7 @@
     .article-hero {
       padding: 10rem 2rem 4rem;
       background: var(--surface);
-      border-bottom: 1px solid #d5d4cf;
+      border-bottom: 1px solid var(--border);
     }
 
     .article-hero .container {
@@ -85,7 +85,7 @@
       color: #3c3c3a;
       padding: 0.5rem 0 0.5rem 1.4rem;
       position: relative;
-      border-bottom: 1px solid #d5d4cf;
+      border-bottom: 1px solid var(--border);
       line-height: 1.75;
     }
 
@@ -98,7 +98,7 @@
     }
 
     .callout {
-      background: #e4e3df;
+      background: #d9e9f7;
       border-left: 3px solid var(--accent);
       border-radius: 0 8px 8px 0;
       padding: 1.2rem 1.5rem;
@@ -127,8 +127,8 @@
     }
 
     .tool-card {
-      background: #ebebea;
-      border: 1px solid #d5d4cf;
+      background: #e9f2fb;
+      border: 1px solid var(--border);
       border-radius: 10px;
       padding: 1.4rem 1.5rem;
       transition: border-color 0.2s;
@@ -201,13 +201,13 @@
       gap: 0.5rem;
       margin-top: 3.5rem;
       padding-top: 2rem;
-      border-top: 1px solid #d5d4cf;
+      border-top: 1px solid var(--border);
     }
 
     .tag {
       font-size: 0.78rem;
       padding: 0.3rem 0.8rem;
-      background: #dddcda;
+      background: #d6e7f6;
       border-radius: 999px;
       color: var(--muted);
       letter-spacing: 0.04em;
@@ -215,7 +215,7 @@
 
     .divider {
       border: none;
-      border-top: 1px solid #d5d4cf;
+      border-top: 1px solid var(--border);
       margin: 3.5rem 0;
     }
 
@@ -306,7 +306,7 @@
         <h3>Flexbox でほとんど並べられる</h3>
         <p>
           横並び・縦並び・中央揃えはほぼ Flexbox で解決できる。
-          <code style="background:#e8e7e2; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.88rem; color:#4d7700;">display: flex</code> を覚えるだけで
+          <code style="background:#ddebf8; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.88rem; color:#4d7700;">display: flex</code> を覚えるだけで
           レイアウトの9割が組めるようになった気がした。
           Grid は「カード一覧」のような格子状レイアウトに使うと強力だとわかってきた。
         </p>
@@ -315,8 +315,8 @@
 
         <h3>スタイルが「効いていない」と思ったら、適用順の問題だった</h3>
         <p>
-          CSSは後に書いたルールが優先される。さらに <code style="background:#e8e7e2; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.88rem; color:#4d7700;">id</code> は
-          <code style="background:#e8e7e2; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.88rem; color:#4d7700;">class</code> より強い——
+          CSSは後に書いたルールが優先される。さらに <code style="background:#ddebf8; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.88rem; color:#4d7700;">id</code> は
+          <code style="background:#ddebf8; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.88rem; color:#4d7700;">class</code> より強い——
           この「詳細度（specificity）」の概念を知らないまま進んでいたので、
           なぜか書いたスタイルが反映されない現象が頻発した。
         </p>
@@ -328,7 +328,7 @@
         <h3>フォントが日本語だけ崩れる</h3>
         <p>
           英字フォントを指定したら日本語部分だけデフォルトのセリフ体になってしまった。
-          CSSの <code style="background:#e8e7e2; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.88rem; color:#4d7700;">font-family</code> はカンマ区切りで複数指定でき、
+          CSSの <code style="background:#ddebf8; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.88rem; color:#4d7700;">font-family</code> はカンマ区切りで複数指定でき、
           左から順にフォールバックされる。
           日本語対応フォントを後ろに並べておくことで解決した。
         </p>
@@ -342,8 +342,8 @@
           PCで完璧に見えていたレイアウトが、スマホで確認したら完全に崩れていた。
           原因は2つ。<strong>①メタタグの viewport 指定がなかった</strong>こと、
           <strong>②固定幅（px）で組んでいた</strong>ことだ。
-          以来、幅は <code style="background:#e8e7e2; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.88rem; color:#4d7700;">%</code> や
-          <code style="background:#e8e7e2; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.88rem; color:#4d7700;">max-width</code> で指定し、
+          以来、幅は <code style="background:#ddebf8; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.88rem; color:#4d7700;">%</code> や
+          <code style="background:#ddebf8; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.88rem; color:#4d7700;">max-width</code> で指定し、
           メディアクエリで画面幅ごとに調整するようにした。
         </p>
 
