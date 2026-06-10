@@ -20,10 +20,7 @@ html {
 }
 
 body {
-  background: linear-gradient(135deg, #eaf4fb 0%, #d4e8f7 25%, #c3ddf2 50%, #d8ecf9 75%, #eef6fc 100%);
-  background-size: 300% 300%;
-  background-attachment: fixed;
-  animation: bg-flow 18s ease-in-out infinite;
+  background: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
   line-height: 1.7;
@@ -32,16 +29,13 @@ body {
   flex-direction: column;
 }
 
-@keyframes bg-flow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+/* 全ページ共通の最奥背景（position: fixed なのでモバイルでも固定される） */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: url('images/22239904.jpg') center / cover no-repeat;
 }
 
 /* ---- Nav ---- */
@@ -94,16 +88,15 @@ nav {
 
 /* ---- Hero ---- */
 .hero {
-  min-height: 52vh;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 10rem 2rem 4rem;
+  padding: 9rem 2rem 3rem;
   position: relative;
   overflow: hidden;
   background-image: url('images/2278346.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: top center;
   background-repeat: no-repeat;
 }
 
@@ -153,7 +146,6 @@ nav {
 /* ---- About ---- */
 .about {
   padding: 5rem 2rem;
-  background: var(--surface);
   border-top: 1px solid var(--border);
   box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.6);
 }
@@ -359,8 +351,7 @@ footer {
 
 @media (max-width: 768px) {
   .hero {
-    min-height: 80vh;
-    padding: 7rem 1.5rem 3rem;
+    padding: 7rem 1.5rem 2.5rem;
     align-items: flex-start;
   }
 
@@ -379,8 +370,7 @@ footer {
   }
 
   .hero {
-    min-height: 65vh;
-    padding: 6rem 1.2rem 3rem;
+    padding: 6rem 1.2rem 2.5rem;
   }
 
   .about,
