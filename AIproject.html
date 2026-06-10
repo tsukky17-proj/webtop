@@ -7,8 +7,8 @@
   <link rel="stylesheet" href="style.css">
   <style>
     .article-hero {
-      padding: 10rem 2rem 4rem;
-      background: var(--surface);
+      padding: 9rem 2rem 3rem;
+      background: url('images/2278346.jpg') top center / cover no-repeat;
       border-bottom: 1px solid var(--border);
     }
 
@@ -238,7 +238,17 @@
       }
     }
 
+    @media (max-width: 768px) {
+      .article-hero {
+        padding: 7rem 1.5rem 2.5rem;
+      }
+    }
+
     @media (max-width: 600px) {
+      .article-hero {
+        padding: 6rem 1.2rem 2.5rem;
+      }
+
       .tool-grid {
         grid-template-columns: 1fr;
       }
@@ -248,7 +258,13 @@
 <body>
   <header>
     <nav>
-      <a href="index.html" class="logo">kumilabo</a>
+      <a href="index.html" class="brand">
+        <img src="images/34347496_s.jpg" alt="kumilabo" class="brand-icon">
+        <span class="brand-text">
+          <span class="brand-name">kumilabo</span>
+          <span class="brand-tagline">ものをつくる、ことをかんがえる。</span>
+        </span>
+      </a>
       <ul class="nav-links">
         <li><a href="index.html#about">About</a></li>
         <li><a href="index.html#categories">Categories</a></li>

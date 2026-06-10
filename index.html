@@ -18,7 +18,13 @@
 <body>
   <header>
     <nav>
-      <a href="index.html" class="logo">kumilabo</a>
+      <a href="index.html" class="brand">
+        <img src="images/34347496_s.jpg" alt="kumilabo" class="brand-icon">
+        <span class="brand-text">
+          <span class="brand-name">kumilabo</span>
+          <span class="brand-tagline">ものをつくる、ことをかんがえる。</span>
+        </span>
+      </a>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#categories">Categories</a></li>
@@ -27,20 +33,12 @@
   </header>
 
   <main>
-    <section class="hero">
-      <div class="hero-inner">
-        <h1 class="site-name">kumilabo</h1>
-        <p class="tagline">ものをつくる、ことをかんがえる。</p>
-      </div>
-    </section>
+    <section class="hero"></section>
 
     <section class="about" id="about">
       <div class="container">
         <h2>About</h2>
         <div class="about-content">
-          <div class="profile-photo">
-            <img src="images/34347496_s.jpg" alt="kumilabo">
-          </div>
           <div class="about-text">
             <p class="profile-name">kumilabo</p>
             <p>
@@ -60,30 +58,37 @@
     <section class="categories" id="categories">
       <div class="container">
         <h2>Categories</h2>
-        <div class="category-grid">
+        <div class="category-slider">
+          <button class="slider-btn prev" type="button" aria-label="前のカテゴリ">←</button>
+          <div class="slider-viewport">
+            <div class="slider-track">
 
-          <a href="Money.html" class="category-card">
-            <span class="category-label">投資・お金</span>
-            <h3>Money</h3>
-            <p>日本株、S株投資、ポイ活など。学生なりの少額からの実践記録。</p>
-            <span class="category-arrow">記事を見る →</span>
-          </a>
+              <a href="Money.html" class="category-card">
+                <span class="category-label">投資・お金</span>
+                <h3>Money</h3>
+                <p>日本株、S株投資、ポイ活など。学生なりの少額からの実践記録。</p>
+                <span class="category-arrow">記事を見る →</span>
+              </a>
 
-          <a href="Hardware.html" class="category-card">
-            <span class="category-label">自作PC・ガジェット</span>
-            <h3>Hardware</h3>
-            <p>初めての自作PC組み立て、パーツ選び、トラブル解決の記録。</p>
-            <span class="category-arrow">記事を見る →</span>
-          </a>
+              <a href="Hardware.html" class="category-card">
+                <span class="category-label">自作PC・ガジェット</span>
+                <h3>Hardware</h3>
+                <p>初めての自作PC組み立て、パーツ選び、トラブル解決の記録。</p>
+                <span class="category-arrow">記事を見る →</span>
+              </a>
 
-          <a href="AIproject.html" class="category-card">
-            <span class="category-label">プログラミング・AI</span>
-            <h3>project</h3>
-            <p>Claude Code を使った開発、自作ツール、作ったゲームの制作記。</p>
-            <span class="category-arrow">記事を見る →</span>
-          </a>
+              <a href="AIproject.html" class="category-card">
+                <span class="category-label">プログラミング・AI</span>
+                <h3>project</h3>
+                <p>Claude Code を使った開発、自作ツール、作ったゲームの制作記。</p>
+                <span class="category-arrow">記事を見る →</span>
+              </a>
 
+            </div>
+          </div>
+          <button class="slider-btn next" type="button" aria-label="次のカテゴリ">→</button>
         </div>
+        <div class="slider-dots"></div>
       </div>
     </section>
   </main>
@@ -91,5 +96,87 @@
   <footer>
     <p>&copy; 2026 kumilabo</p>
   </footer>
+
+  <script>
+    (function () {
+      const viewport = document.querySelector('.slider-viewport');
+      const track = document.querySelector('.slider-track');
+      const prevBtn = document.querySelector('.slider-btn.prev');
+      const nextBtn = document.querySelector('.slider-btn.next');
+      const dotsBox = document.querySelector('.slider-dots');
+      const slides = Array.from(track.children);
+      const count = slides.length;
+      const CLONES = 2; // 両隣を見せるため左右に2枚ずつ複製を置く
+
+      for (let i = 0; i < CLONES; i++) {
+        track.appendChild(slides[i % count].cloneNode(true));
+        track.insertBefore(slides[count - 1 - (i % count)].cloneNode(true), track.firstChild);
+      }
+
+      let index = CLONES; // 複製を含めた位置。CLONES が実スライドの先頭
+      let isMoving = false;
+
+      const dots = slides.map((_, i) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.setAttribute('aria-label', 'カテゴリ ' + (i + 1));
+        dot.addEventListener('click', () => {
+          if (isMoving) return;
+          index = i + CLONES;
+          move(true);
+        });
+        dotsBox.appendChild(dot);
+        return dot;
+      });
+
+      // 現在のスライドがビューポート中央に来る位置へトラックを動かす
+      function move(animate) {
+        const current = track.children[index];
+        const offset = current.offsetLeft - (viewport.clientWidth - current.offsetWidth) / 2;
+        track.style.transition = animate ? 'transform 0.45s ease' : 'none';
+        track.style.transform = 'translateX(' + -offset + 'px)';
+        if (animate) isMoving = true;
+
+        Array.from(track.children).forEach(function (el, i) {
+          el.classList.toggle('is-active', i === index);
+        });
+        const active = ((index - CLONES) % count + count) % count;
+        dots.forEach(function (dot, i) {
+          dot.classList.toggle('active', i === active);
+        });
+      }
+
+      prevBtn.addEventListener('click', function () {
+        if (isMoving) return;
+        index--;
+        move(true);
+      });
+
+      nextBtn.addEventListener('click', function () {
+        if (isMoving) return;
+        index++;
+        move(true);
+      });
+
+      // 複製スライドに到達したら、同じ見た目の実スライドへ瞬間移動して一周をつなぐ
+      track.addEventListener('transitionend', function (e) {
+        if (e.target !== track || e.propertyName !== 'transform') return;
+        isMoving = false;
+        if (index >= count + CLONES) {
+          index -= count;
+          move(false);
+        } else if (index < CLONES) {
+          index += count;
+          move(false);
+        }
+      });
+
+      window.addEventListener('resize', function () {
+        move(false);
+      });
+
+      move(false);
+    })();
+  </script>
 </body>
 </html>
