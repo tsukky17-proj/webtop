@@ -5,11 +5,11 @@
 }
 
 :root {
-  --bg: #0f0f0f;
-  --surface: #1a1a1a;
-  --accent: #c8f135;
-  --text: #e8e8e8;
-  --muted: #888;
+  --bg: #f5f4f0;
+  --surface: #eae9e4;
+  --accent: #4d7700;
+  --text: #1c1c1a;
+  --muted: #6e6e6a;
   --font-sans: 'Helvetica Neue', Arial, 'Hiragino Sans', 'Noto Sans JP', sans-serif;
 }
 
@@ -36,8 +36,9 @@ header {
   right: 0;
   z-index: 100;
   padding: 1.2rem 2rem;
-  background: rgba(15, 15, 15, 0.7);
+  background: rgba(245, 244, 240, 0.92);
   backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 nav {
@@ -75,11 +76,11 @@ nav {
 
 /* ---- Hero ---- */
 .hero {
-  min-height: 100vh;
+  min-height: 58vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 6rem 2rem 4rem;
+  padding: 9rem 2rem 5rem;
   position: relative;
   overflow: hidden;
 }
@@ -87,14 +88,24 @@ nav {
 .hero::before {
   content: '';
   position: absolute;
-  width: 500px;
-  height: 500px;
+  width: 420px;
+  height: 420px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(200, 241, 53, 0.07) 0%, transparent 70%);
-  top: 50%;
+  background: radial-gradient(circle, rgba(77, 119, 0, 0.05) 0%, transparent 70%);
+  top: 40%;
   left: 50%;
-  transform: translate(-50%, -55%);
+  transform: translate(-50%, -50%);
   pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent 0%, rgba(77, 119, 0, 0.3) 50%, transparent 100%);
 }
 
 .hero-inner {
@@ -102,12 +113,12 @@ nav {
 }
 
 .site-name {
-  font-size: clamp(3.5rem, 12vw, 8rem);
+  font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   line-height: 1;
-  color: #fff;
-  margin-bottom: 1.2rem;
+  color: var(--text);
+  margin-bottom: 1rem;
 }
 
 .site-name span {
@@ -155,14 +166,14 @@ nav {
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #2a2a2a;
+  border: 2px solid #d0cfca;
   display: block;
 }
 
 .profile-name {
   font-size: 1.3rem;
   font-weight: 800;
-  color: #fff;
+  color: var(--text);
   letter-spacing: 0.04em;
   margin-bottom: 1rem !important;
 }
@@ -201,7 +212,7 @@ nav {
 
 .about-text p {
   font-size: 1.05rem;
-  color: #ccc;
+  color: #3c3c3a;
   margin-bottom: 1.4rem;
 }
 
@@ -210,7 +221,7 @@ nav {
 }
 
 .about-text strong {
-  color: #fff;
+  color: var(--text);
   font-weight: 700;
 }
 
@@ -243,7 +254,7 @@ nav {
   flex-direction: column;
   padding: 2rem 1.8rem;
   background: var(--surface);
-  border: 1px solid #262626;
+  border: 1px solid #d5d4cf;
   border-radius: 12px;
   text-decoration: none;
   color: var(--text);
@@ -265,13 +276,13 @@ nav {
 .category-card h3 {
   font-size: 1.5rem;
   font-weight: 800;
-  color: #fff;
+  color: var(--text);
   margin-bottom: 0.8rem;
 }
 
 .category-card p {
   font-size: 0.92rem;
-  color: #bbb;
+  color: #555552;
   line-height: 1.6;
   flex-grow: 1;
   margin-bottom: 1.5rem;
@@ -290,7 +301,7 @@ footer {
   text-align: center;
   font-size: 0.8rem;
   color: var(--muted);
-  border-top: 1px solid #222;
+  border-top: 1px solid #d5d4cf;
 }
 
 /* ---- Responsive ---- */

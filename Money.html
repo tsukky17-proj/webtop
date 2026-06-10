@@ -9,7 +9,7 @@
     .article-hero {
       padding: 10rem 2rem 4rem;
       background: var(--surface);
-      border-bottom: 1px solid #222;
+      border-bottom: 1px solid #d5d4cf;
     }
 
     .article-hero .container {
@@ -29,7 +29,7 @@
       font-size: clamp(1.8rem, 5vw, 2.8rem);
       font-weight: 800;
       line-height: 1.25;
-      color: #fff;
+      color: var(--text);
       margin-bottom: 1rem;
     }
 
@@ -59,19 +59,19 @@
     .article-body h3 {
       font-size: 1.1rem;
       font-weight: 700;
-      color: #fff;
+      color: var(--text);
       margin: 2.2rem 0 0.8rem;
     }
 
     .article-body p {
       font-size: 1.02rem;
-      color: #ccc;
+      color: #3c3c3a;
       margin-bottom: 1.4rem;
       line-height: 1.85;
     }
 
     .article-body strong {
-      color: #fff;
+      color: var(--text);
       font-weight: 700;
     }
 
@@ -82,10 +82,10 @@
 
     .article-body ul li {
       font-size: 1rem;
-      color: #ccc;
+      color: #3c3c3a;
       padding: 0.5rem 0 0.5rem 1.4rem;
       position: relative;
-      border-bottom: 1px solid #222;
+      border-bottom: 1px solid #d5d4cf;
       line-height: 1.75;
     }
 
@@ -98,7 +98,7 @@
     }
 
     .callout {
-      background: #1e1e1e;
+      background: #e4e3df;
       border-left: 3px solid var(--accent);
       border-radius: 0 8px 8px 0;
       padding: 1.2rem 1.5rem;
@@ -108,7 +108,7 @@
     .callout p {
       margin: 0;
       font-size: 0.95rem;
-      color: #bbb;
+      color: #4a4a48;
     }
 
     .data-table {
@@ -126,21 +126,21 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--muted);
-      border-bottom: 1px solid #333;
+      border-bottom: 1px solid #c5c4c0;
     }
 
     .data-table td {
       padding: 0.8rem 1rem;
-      color: #ccc;
-      border-bottom: 1px solid #222;
+      color: #3c3c3a;
+      border-bottom: 1px solid #d5d4cf;
     }
 
     .data-table td.plus {
-      color: #6ee7b7;
+      color: #0a6642;
     }
 
     .data-table td.minus {
-      color: #f87171;
+      color: #b91c1c;
     }
 
     .back-link {
@@ -164,13 +164,13 @@
       gap: 0.5rem;
       margin-top: 3.5rem;
       padding-top: 2rem;
-      border-top: 1px solid #222;
+      border-top: 1px solid #d5d4cf;
     }
 
     .tag {
       font-size: 0.78rem;
       padding: 0.3rem 0.8rem;
-      background: #222;
+      background: #dddcda;
       border-radius: 999px;
       color: var(--muted);
       letter-spacing: 0.04em;
@@ -192,7 +192,7 @@
     <section class="article-hero">
       <div class="container">
         <p class="article-category">Money</p>
-        <h1 class="article-title">月3,000円から始めた日本株投資——S株で学んだこと、失ったこと</h1>
+        <h1 class="article-title">大学生が投資をはじめてみた</h1>
         <p class="article-meta">2026-05-18 &nbsp;·&nbsp; 投資・お金</p>
       </div>
     </section>
@@ -202,97 +202,57 @@
         <a href="index.html#categories" class="back-link">← Categories に戻る</a>
 
         <p>
-          大学2年の春、アルバイト代が少し余るようになったのをきっかけに投資を始めた。
-          証券口座を開いてみたものの、最初に見た株価の数字に圧倒された——
-          <strong>1株=数万円</strong>の銘柄がずらりと並んでいたからだ。
-        </p>
-        <p>
-          そこで知ったのが「S株（単元未満株）」という仕組みだった。
-          1株を100分の1単位から買える制度で、数百円から有名企業の株主になれる。
-          これなら失っても授業料だと思って、小額でのんびり試してみることにした。
+          これはある大学生が2年の冬に始めた投資の実録です。
+          株ど素人が収支マイナスからプラスにもっていった記録を書いていこうと思ってます。
         </p>
 
-        <h2>そもそもS株とは</h2>
+        <h2>使用した証券口座</h2>
         <p>
-          SBI証券が提供するサービスで、正式名称は「単元未満株」。
-          通常、日本株は<strong>100株単位</strong>でしか売買できないが、
-          S株なら1株・2株といった単位で取引できる。
-          手数料は1回あたり約定代金の0.55%（最低55円）で、
-          少額ゆえ相対的にコストは高いが、「まず買ってみる」ハードルが一気に下がる。
+          松井証券、SBI証券
         </p>
 
         <div class="callout">
-          <p>注意：S株は注文翌営業日の始値で約定するため、指値は使えない。タイミング調整は難しい。</p>
+          <p>日本株=SBI証券の単元未満株という前提で話を進めます</p>
         </div>
 
-        <h2>実際に買った銘柄と結果</h2>
-        <p>
-          期間は約6ヵ月。毎月3,000〜5,000円を入金し、気になった銘柄を少しずつ積み上げた。
-          以下はサンプルとして掲載している架空の記録だが、実際の値動きのイメージに近い内容にしている。
-        </p>
-
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>銘柄</th>
-              <th>取得単価</th>
-              <th>株数</th>
-              <th>損益</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>トヨタ自動車</td>
-              <td>¥3,120</td>
-              <td>3株</td>
-              <td class="plus">+¥540</td>
-            </tr>
-            <tr>
-              <td>任天堂</td>
-              <td>¥8,850</td>
-              <td>1株</td>
-              <td class="plus">+¥210</td>
-            </tr>
-            <tr>
-              <td>ソフトバンクG</td>
-              <td>¥6,440</td>
-              <td>2株</td>
-              <td class="minus">−¥680</td>
-            </tr>
-            <tr>
-              <td>NTT</td>
-              <td>¥178</td>
-              <td>10株</td>
-              <td class="plus">+¥90</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h2>やってみてわかったこと</h2>
-
-        <h3>よかった点</h3>
+        <h2>それぞれの証券の特徴</h2>
+        <h3>松井証券</h3>
         <ul>
-          <li>「株を持っている」という感覚がニュースへの解像度を上げた。決算発表が気になり始めた。</li>
-          <li>少額なので含み損になっても冷静でいられた。メンタルの練習になった。</li>
-          <li>配当金が初めて振り込まれたとき（数十円でも）、資産が働いている実感があった。</li>
+          <li>25歳以下は国内株式・ETFの取引手数料が完全無料</li>
+          <li>「プチ株」で1株未満から日本株を購入できる単元未満株サービスあり</li>
+          <li>「投信工房」というロボアドバイザーで投資信託の自動積立が可能</li>
+          <li>電話サポートが充実していて初心者でも質問しやすい</li>
+        </ul>
+        <h3>SBI証券</h3>
+        <ul>
+          <li>国内最大規模のネット証券で、国内株・米国株・投資信託・FXなど取扱商品が幅広い</li>
+          <li>単元未満株「S株」で1株から日本株を購入できる（注文は翌営業日以降に約定）</li>
+          <li>米国株・外国株の取り扱いが豊富で、為替コストも比較的低い</li>
+          <li>NISA口座開設数No.1で、つみたて投資枠の対応銘柄も多い</li>
+          <li>IPO取扱数が業界トップクラス</li>
+          <li>Vポイントなど各種ポイントが取引ごとに貯まる</li>
         </ul>
 
-        <h3>つまずいた点</h3>
+        <h2>やってみて分かったこと</h2>
         <ul>
-          <li>S株は手数料比率が高い。少額を頻繁に売買すると利益がすぐ溶ける。</li>
-          <li>「なんとなく知ってる会社」だけで選んでいたので、業績を調べる習慣がなかった。</li>
-          <li>ソフトバンクGのように情報量が多い銘柄は、理解が追いつかないうちに動く。</li>
+          <li>タイミングなんてわからない。「今が底」と思って買ったら翌日さらに下がる。</li>
+          <li>チャートのテンプレを勉強してもあまり意味がない。机上の知識と実際の値動きはズレる。</li>
+          <li>どんな銘柄も株価が上がってニュースになるときにはもう遅い。話題になった時点で高値圏。</li>
+          <li>とにかく時間がかかる。数ヶ月単位で保有してやっと動きが見えてくる。</li>
         </ul>
 
-        <h2>次にやること</h2>
+        <h2>失敗談</h2>
+        <ul>
+          <li>自分が売ったら上がる、買ったら下がるの繰り返し。逆神かと思った。</li>
+          <li>SNSの情報に飛びついて損。「この銘柄爆上がり」系の投稿を信じたのが間違いだった。</li>
+        </ul>
+
+        <h2>とりあえずこれからの予定</h2>
         <p>
-          S株での「お試し」は終えたので、次は<strong>積立NISA（現・つみたて投資枠）</strong>で
-          インデックスファンドへの積立を軸にする予定。
-          個別株は引き続き少額で試しながら、決算書の読み方を少しずつ学んでいく。
+          引き続き今持っている銘柄は保持で、ほかにもっと企業を深堀して新しい買いを探そうかなって感じです。
         </p>
         <p>
-          完璧に理解してから始めようとすると永遠に始まらない——
-          小さく動いて、動きながら学ぶのが自分に合っていると感じた半年間だった。
+          今後面白い展開があれば都度報告していこうと思うので、良ければまたお願いします！
         </p>
 
         <div class="tag-list">

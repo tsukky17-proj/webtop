@@ -9,7 +9,7 @@
     .article-hero {
       padding: 10rem 2rem 4rem;
       background: var(--surface);
-      border-bottom: 1px solid #222;
+      border-bottom: 1px solid #d5d4cf;
     }
 
     .article-hero .container {
@@ -29,7 +29,7 @@
       font-size: clamp(1.8rem, 5vw, 2.8rem);
       font-weight: 800;
       line-height: 1.25;
-      color: #fff;
+      color: var(--text);
       margin-bottom: 1rem;
     }
 
@@ -59,19 +59,19 @@
     .article-body h3 {
       font-size: 1.1rem;
       font-weight: 700;
-      color: #fff;
+      color: var(--text);
       margin: 2.2rem 0 0.8rem;
     }
 
     .article-body p {
       font-size: 1.02rem;
-      color: #ccc;
+      color: #3c3c3a;
       margin-bottom: 1.4rem;
       line-height: 1.85;
     }
 
     .article-body strong {
-      color: #fff;
+      color: var(--text);
       font-weight: 700;
     }
 
@@ -82,10 +82,10 @@
 
     .article-body ul li {
       font-size: 1rem;
-      color: #ccc;
+      color: #3c3c3a;
       padding: 0.5rem 0 0.5rem 1.4rem;
       position: relative;
-      border-bottom: 1px solid #222;
+      border-bottom: 1px solid #d5d4cf;
       line-height: 1.75;
     }
 
@@ -98,7 +98,7 @@
     }
 
     .callout {
-      background: #1e1e1e;
+      background: #e4e3df;
       border-left: 3px solid var(--accent);
       border-radius: 0 8px 8px 0;
       padding: 1.2rem 1.5rem;
@@ -108,15 +108,15 @@
     .callout p {
       margin: 0;
       font-size: 0.95rem;
-      color: #bbb;
+      color: #4a4a48;
     }
 
     .callout.warn {
-      border-left-color: #f87171;
+      border-left-color: #dc2626;
     }
 
     .callout.warn p {
-      color: #fca5a5;
+      color: #991b1b;
     }
 
     .tool-grid {
@@ -127,8 +127,8 @@
     }
 
     .tool-card {
-      background: #1a1a1a;
-      border: 1px solid #262626;
+      background: #ebebea;
+      border: 1px solid #d5d4cf;
       border-radius: 10px;
       padding: 1.4rem 1.5rem;
       transition: border-color 0.2s;
@@ -142,7 +142,7 @@
       display: inline-block;
       font-size: 0.72rem;
       padding: 0.2rem 0.6rem;
-      background: #222;
+      background: rgba(77, 119, 0, 0.1);
       border-radius: 999px;
       color: var(--accent);
       letter-spacing: 0.06em;
@@ -152,19 +152,19 @@
     .tool-card .tool-name {
       font-size: 0.95rem;
       font-weight: 700;
-      color: #fff;
+      color: var(--text);
       margin-bottom: 0.4rem;
     }
 
     .tool-card .tool-desc {
       font-size: 0.88rem;
-      color: #999;
+      color: #5a5a58;
       line-height: 1.65;
       margin: 0;
     }
 
     .code-block {
-      background: #111;
+      background: #1e1e1e;
       border: 1px solid #2a2a2a;
       border-radius: 8px;
       padding: 1.2rem 1.5rem;
@@ -201,13 +201,13 @@
       gap: 0.5rem;
       margin-top: 3.5rem;
       padding-top: 2rem;
-      border-top: 1px solid #222;
+      border-top: 1px solid #d5d4cf;
     }
 
     .tag {
       font-size: 0.78rem;
       padding: 0.3rem 0.8rem;
-      background: #222;
+      background: #dddcda;
       border-radius: 999px;
       color: var(--muted);
       letter-spacing: 0.04em;
@@ -215,7 +215,7 @@
 
     .divider {
       border: none;
-      border-top: 1px solid #222;
+      border-top: 1px solid #d5d4cf;
       margin: 3.5rem 0;
     }
 
@@ -287,7 +287,7 @@
         <h3>Flexbox でほとんど並べられる</h3>
         <p>
           横並び・縦並び・中央揃えはほぼ Flexbox で解決できる。
-          <code style="background:#222; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.88rem; color:#c8f135;">display: flex</code> を覚えるだけで
+          <code style="background:#e8e7e2; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.88rem; color:#4d7700;">display: flex</code> を覚えるだけで
           レイアウトの9割が組めるようになった気がした。
           Grid は「カード一覧」のような格子状レイアウトに使うと強力だとわかってきた。
         </p>
@@ -296,8 +296,8 @@
 
         <h3>スタイルが「効いていない」と思ったら、適用順の問題だった</h3>
         <p>
-          CSSは後に書いたルールが優先される。さらに <code style="background:#222; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.88rem; color:#c8f135;">id</code> は
-          <code style="background:#222; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.88rem; color:#c8f135;">class</code> より強い——
+          CSSは後に書いたルールが優先される。さらに <code style="background:#e8e7e2; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.88rem; color:#4d7700;">id</code> は
+          <code style="background:#e8e7e2; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.88rem; color:#4d7700;">class</code> より強い——
           この「詳細度（specificity）」の概念を知らないまま進んでいたので、
           なぜか書いたスタイルが反映されない現象が頻発した。
         </p>
@@ -309,7 +309,7 @@
         <h3>フォントが日本語だけ崩れる</h3>
         <p>
           英字フォントを指定したら日本語部分だけデフォルトのセリフ体になってしまった。
-          CSSの <code style="background:#222; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.88rem; color:#c8f135;">font-family</code> はカンマ区切りで複数指定でき、
+          CSSの <code style="background:#e8e7e2; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.88rem; color:#4d7700;">font-family</code> はカンマ区切りで複数指定でき、
           左から順にフォールバックされる。
           日本語対応フォントを後ろに並べておくことで解決した。
         </p>
@@ -323,8 +323,8 @@
           PCで完璧に見えていたレイアウトが、スマホで確認したら完全に崩れていた。
           原因は2つ。<strong>①メタタグの viewport 指定がなかった</strong>こと、
           <strong>②固定幅（px）で組んでいた</strong>ことだ。
-          以来、幅は <code style="background:#222; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.88rem; color:#c8f135;">%</code> や
-          <code style="background:#222; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.88rem; color:#c8f135;">max-width</code> で指定し、
+          以来、幅は <code style="background:#e8e7e2; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.88rem; color:#4d7700;">%</code> や
+          <code style="background:#e8e7e2; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.88rem; color:#4d7700;">max-width</code> で指定し、
           メディアクエリで画面幅ごとに調整するようにした。
         </p>
 
