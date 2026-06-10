@@ -19,13 +19,28 @@ html {
 }
 
 body {
-  background: var(--bg);
+  background: linear-gradient(135deg, #eaf4fb 0%, #d4e8f7 25%, #c3ddf2 50%, #d8ecf9 75%, #eef6fc 100%);
+  background-size: 300% 300%;
+  background-attachment: fixed;
+  animation: bg-flow 18s ease-in-out infinite;
   color: var(--text);
   font-family: var(--font-sans);
   line-height: 1.7;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+@keyframes bg-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* ---- Nav ---- */
@@ -85,18 +100,17 @@ nav {
   padding: 10rem 2rem 4rem;
   position: relative;
   overflow: hidden;
+  background-image: url('images/2278346.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .hero::before {
   content: '';
   position: absolute;
-  width: 420px;
-  height: 420px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(77, 119, 0, 0.05) 0%, transparent 70%);
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  inset: 0;
+  background: none;
   pointer-events: none;
 }
 
@@ -112,6 +126,8 @@ nav {
 
 .hero-inner {
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .site-name {
