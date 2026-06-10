@@ -45,6 +45,8 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .logo {
@@ -76,11 +78,11 @@ nav {
 
 /* ---- Hero ---- */
 .hero {
-  min-height: 58vh;
+  min-height: 52vh;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 9rem 2rem 5rem;
+  padding: 10rem 2rem 4rem;
   position: relative;
   overflow: hidden;
 }
@@ -133,12 +135,14 @@ nav {
 
 /* ---- About ---- */
 .about {
-  padding: 6rem 2rem;
+  padding: 5rem 2rem;
   background: var(--surface);
+  border-top: 1px solid #d5d4cf;
+  box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.6);
 }
 
 .container {
-  max-width: 720px;
+  max-width: 860px;
   margin: 0 auto;
 }
 
@@ -231,7 +235,7 @@ nav {
 }
 
 .categories .container {
-  max-width: 960px;
+  max-width: 1080px;
 }
 
 .categories h2 {
@@ -305,7 +309,44 @@ footer {
 }
 
 /* ---- Responsive ---- */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 980px;
+  }
+
+  .categories .container {
+    max-width: 1180px;
+  }
+
+  .about-content {
+    gap: 4rem;
+  }
+
+  .profile-photo img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .about-text p {
+    font-size: 1.12rem;
+  }
+
+  .category-card p {
+    font-size: 0.98rem;
+  }
+
+  .category-card h3 {
+    font-size: 1.7rem;
+  }
+}
+
 @media (max-width: 768px) {
+  .hero {
+    min-height: 80vh;
+    padding: 7rem 1.5rem 3rem;
+    align-items: flex-start;
+  }
+
   .category-grid {
     grid-template-columns: 1fr;
   }
@@ -318,6 +359,11 @@ footer {
 
   .nav-links {
     gap: 1.2rem;
+  }
+
+  .hero {
+    min-height: 65vh;
+    padding: 6rem 1.2rem 3rem;
   }
 
   .about,
