@@ -7,6 +7,7 @@
 :root {
   --bg: #eaf4fb;
   --surface: #e7f0f9;
+  --panel: #ffffff;
   --border: #c5d9ec;
   --accent: #4d7700;
   --text: #1c1c1a;
@@ -36,6 +37,19 @@ body::before {
   inset: 0;
   z-index: -1;
   background: url('images/22239904.jpg') center / cover no-repeat;
+}
+
+/* 文章エリアの背面だけを縦に貫く白い帯。左右に最奥の背景画像が見える */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(100%, 1200px);
+  z-index: -1;
+  background: var(--panel);
 }
 
 /* ---- Nav ---- */
@@ -225,7 +239,6 @@ nav {
 /* ---- Categories ---- */
 .categories {
   padding: 6rem 2rem;
-  background: rgba(231, 240, 249, 0.65);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
