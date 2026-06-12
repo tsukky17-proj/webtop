@@ -127,7 +127,7 @@ nav {
 
 /* ---- Hero ---- */
 .hero {
-  height: 17rem;
+  height: 20rem;
   position: relative;
   overflow: hidden;
   background-image: url('images/2278346.jpg');
@@ -154,91 +154,14 @@ nav {
   background: linear-gradient(to right, transparent 0%, rgba(77, 119, 0, 0.3) 50%, transparent 100%);
 }
 
-/* ---- About ---- */
-.about {
-  padding: 5rem 2rem;
-  border-top: 1px solid var(--border);
-  box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.6);
-}
-
 .container {
   max-width: 860px;
   margin: 0 auto;
 }
 
-.about h2 {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 2.5rem;
-}
-
-.about-content {
-  display: flex;
-  align-items: flex-start;
-  gap: 2.5rem;
-}
-
-.profile-name {
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: var(--text);
-  letter-spacing: 0.04em;
-  margin-bottom: 1rem !important;
-}
-
-.profile-list {
-  list-style: none;
-  margin-top: 1.4rem;
-}
-
-.profile-list li {
-  font-size: 0.92rem;
-  color: var(--muted);
-  padding: 0.3rem 0;
-  padding-left: 1.1em;
-  position: relative;
-}
-
-.profile-list li::before {
-  content: '—';
-  position: absolute;
-  left: 0;
-  color: var(--accent);
-}
-
-@media (max-width: 600px) {
-  .about-content {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .profile-list li {
-    text-align: left;
-  }
-}
-
-.about-text p {
-  font-size: 1.05rem;
-  color: #3c3c3a;
-  margin-bottom: 1.4rem;
-}
-
-.about-text p:last-child {
-  margin-bottom: 0;
-}
-
-.about-text strong {
-  color: var(--text);
-  font-weight: 700;
-}
-
 /* ---- Categories ---- */
 .categories {
-  padding: 6rem 2rem;
+  padding: 10rem 2rem 6rem; /* スライダーが画面中央あたりに来るように上余白で調整 */
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
@@ -256,30 +179,92 @@ nav {
   margin-bottom: 2.5rem;
 }
 
+/* コンテナを突き抜けて画面幅近くまで広げる。
+   左右の端に最奥の背景画像が少し見える */
 .category-slider {
   position: relative;
-  max-width: 880px;
-  margin: 0 auto;
+  width: 80vw;
+  margin-left: calc(50% - 40vw);
 }
 
 .slider-viewport {
   overflow: hidden;
-  padding: 6px 0; /* カードのホバー時の浮き上がり分を確保 */
+  padding: 14px 0 46px; /* 3D変形のはみ出しと下に落ちる影の分を確保 */
+  perspective: 1200px;  /* 奥行き表現の遠近法。値が小さいほど立体感が強い */
 }
 
 .slider-track {
   display: flex;
   gap: 1.2rem;
+  transform-style: preserve-3d; /* 子カードのtranslateZを平面に潰さず奥行きとして描く */
 }
 
+/* 真ん中が手前、外側ほど奥へ下がるコインフロー風の奥行き。
+   --tz（奥行き）と--ry（左右の向き）をカードの位置ごとに切り替える */
 .slider-track .category-card {
-  flex: 0 0 68%;
-  opacity: 0.35;
-  transition: border-color 0.2s, transform 0.2s, opacity 0.45s;
+  --tz: -320px;
+  --ry: 0deg;
+  flex: 0 0 24%;
+  position: relative;
+  transform: translateZ(var(--tz)) rotateY(var(--ry));
+  box-shadow: 0 22px 26px -14px rgba(0, 40, 80, 0.35);
+  transition: border-color 0.2s, transform 0.45s;
 }
 
+/* 中央 */
 .slider-track .category-card.is-active {
-  opacity: 1;
+  --tz: 0px;
+  --ry: 0deg;
+}
+
+/* 中央の左隣・右隣（やや奥で内向き） */
+.slider-track .category-card:has(+ .is-active) {
+  --tz: -120px;
+  --ry: 22deg;
+}
+
+.slider-track .is-active + .category-card {
+  --tz: -120px;
+  --ry: -22deg;
+}
+
+/* さらに外側（もっと奥で角度も強い） */
+.slider-track .category-card:has(+ .category-card + .is-active) {
+  --tz: -230px;
+  --ry: 30deg;
+}
+
+.slider-track .is-active + .category-card + .category-card {
+  --tz: -230px;
+  --ry: -30deg;
+}
+
+/* ホバーで globalの translateY に潰されないよう奥行きを維持 */
+.slider-track .category-card:hover {
+  transform: translateZ(var(--tz)) rotateY(var(--ry));
+}
+
+.slider-track .category-card.is-active:hover {
+  transform: translateZ(20px) rotateY(0deg);
+}
+
+/* 中央の3枚以外は白いベールを重ねて薄く見せる。
+   カード自体は不透明なので背景写真の上でも形がはっきり残る */
+.slider-track .category-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: var(--panel);
+  opacity: 0.78;
+  transition: opacity 0.45s;
+  pointer-events: none;
+}
+
+.slider-track .category-card.is-active::after,
+.slider-track .is-active + .category-card::after,
+.slider-track .category-card:has(+ .is-active)::after {
+  opacity: 0;
 }
 
 .slider-btn {
@@ -400,14 +385,6 @@ footer {
     max-width: 1180px;
   }
 
-  .about-content {
-    gap: 4rem;
-  }
-
-  .about-text p {
-    font-size: 1.12rem;
-  }
-
   .category-card p {
     font-size: 0.98rem;
   }
@@ -470,8 +447,368 @@ footer {
     font-size: 0.65rem;
   }
 
-  .about,
   .categories {
-    padding: 4rem 1.2rem;
+    padding: 3rem 1.2rem 4rem;
+  }
+}
+
+/* ==== Article pages (Money / Hardware / AIproject 共通＋各固有) ==== */
+.article-hero {
+  padding: 9rem 2rem 3rem;
+  background: url('images/2278346.jpg') top center / cover no-repeat;
+  border-bottom: 1px solid var(--border);
+}
+
+.article-hero .container {
+  max-width: 860px;
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 1.8rem 2rem;
+}
+
+.article-category {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+}
+
+.article-title {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.article-meta {
+  font-size: 0.82rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.article-body {
+  padding: 5rem 2rem 6rem;
+}
+
+.article-body .container {
+  max-width: 860px;
+}
+
+.article-body h2 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 3.5rem 0 1.2rem;
+}
+
+.article-body h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 2.2rem 0 0.8rem;
+}
+
+.article-body p {
+  font-size: 1.02rem;
+  color: #3c3c3a;
+  margin-bottom: 1.4rem;
+  line-height: 1.85;
+}
+
+.article-body strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.article-body ul {
+  list-style: none;
+  margin-bottom: 1.4rem;
+}
+
+.article-body ul li {
+  font-size: 1rem;
+  color: #3c3c3a;
+  padding: 0.5rem 0 0.5rem 1.4rem;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.75;
+}
+
+.article-body ul li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 0.85rem;
+}
+
+.callout {
+  background: #d9e9f7;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 1.2rem 1.5rem;
+  margin: 2rem 0;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #4a4a48;
+}
+
+.callout.warn {
+  border-left-color: #dc2626;
+}
+
+.callout.warn p {
+  color: #991b1b;
+}
+
+/* Money: 収支テーブル */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0 2rem;
+  font-size: 0.92rem;
+}
+
+.data-table th {
+  text-align: left;
+  padding: 0.7rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid #aecbe5;
+}
+
+.data-table td {
+  padding: 0.8rem 1rem;
+  color: #3c3c3a;
+  border-bottom: 1px solid var(--border);
+}
+
+.data-table td.plus {
+  color: #0a6642;
+}
+
+.data-table td.minus {
+  color: #b91c1c;
+}
+
+/* Hardware: パーツ表・ガジェットカード */
+.parts-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0 2rem;
+  font-size: 0.92rem;
+}
+
+.parts-table th {
+  text-align: left;
+  padding: 0.7rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid #aecbe5;
+}
+
+.parts-table td {
+  padding: 0.8rem 1rem;
+  color: #3c3c3a;
+  border-bottom: 1px solid var(--border);
+}
+
+.parts-table td.price {
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.gadget-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.gadget-card {
+  background: #e9f2fb;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.4rem 1.5rem;
+  transition: border-color 0.2s;
+}
+
+.gadget-card:hover {
+  border-color: var(--accent);
+}
+
+.gadget-card .gadget-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+
+.gadget-card .gadget-desc {
+  font-size: 0.88rem;
+  color: #5a5a58;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.gadget-card .gadget-label {
+  display: inline-block;
+  font-size: 0.72rem;
+  padding: 0.2rem 0.6rem;
+  background: rgba(77, 119, 0, 0.1);
+  border-radius: 999px;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.7rem;
+}
+
+/* AIproject: ツールカード・コードブロック */
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.tool-card {
+  background: #e9f2fb;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.4rem 1.5rem;
+  transition: border-color 0.2s;
+}
+
+.tool-card:hover {
+  border-color: var(--accent);
+}
+
+.tool-card .tool-label {
+  display: inline-block;
+  font-size: 0.72rem;
+  padding: 0.2rem 0.6rem;
+  background: rgba(77, 119, 0, 0.1);
+  border-radius: 999px;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.7rem;
+}
+
+.tool-card .tool-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+
+.tool-card .tool-desc {
+  font-size: 0.88rem;
+  color: #5a5a58;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.code-block {
+  background: #1e1e1e;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 1.2rem 1.5rem;
+  margin: 1.5rem 0 2rem;
+  overflow-x: auto;
+}
+
+.code-block code {
+  font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
+  font-size: 0.88rem;
+  color: #a8d8a8;
+  line-height: 1.7;
+  white-space: pre;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-decoration: none;
+  margin-bottom: 3rem;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: var(--accent);
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.tag {
+  font-size: 0.78rem;
+  padding: 0.3rem 0.8rem;
+  background: #d6e7f6;
+  border-radius: 999px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 3.5rem 0;
+}
+
+@media (min-width: 1200px) {
+  .article-hero .container,
+  .article-body .container {
+    max-width: 920px;
+  }
+
+  .article-body p {
+    font-size: 1.1rem;
+  }
+
+  .article-body ul li {
+    font-size: 1.06rem;
+  }
+
+  .article-body h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .article-hero {
+    padding: 7rem 1.5rem 2.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .article-hero {
+    padding: 6rem 1.2rem 2.5rem;
+  }
+
+  .gadget-grid,
+  .tool-grid {
+    grid-template-columns: 1fr;
   }
 }
